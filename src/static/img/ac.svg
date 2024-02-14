@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 923.72 285.32">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-2 {
+        font-size: 108.33px;
+        letter-spacing: .02em;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: Montserrat-Medium, Montserrat;
+        font-weight: 500;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #019a54;
+      }
+
+      .cls-3 {
+        font-size: 81.41px;
+      }
+
+      .cls-5 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-6 {
+        fill: #fff;
+      }
+
+      .cls-6, .cls-7, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-7 {
+        fill: url(#Degradado_sin_nombre_7);
+      }
+    </style>
+    <radialGradient id="Degradado_sin_nombre_7" data-name="Degradado sin nombre 7" cx="131.3" cy="142.66" fx="131.3" fy="142.66" r="154.44" gradientUnits="userSpaceOnUse">
+      <stop offset=".31" stop-color="#019a54"/>
+      <stop offset="1" stop-color="#1f3b2e"/>
+    </radialGradient>
+  </defs>
+  <g id="GUIAS">
+    <g>
+      <path class="cls-7" d="M244.09,201.17c-3.88,6.71-8.41,13-13.49,18.78l-25.96-67.64V43.31c16.26,10.17,29.85,24.21,39.46,40.84,5.32-6.76,11.53-13.04,18.52-18.74C237.21,26.05,192.98,0,142.66,0,63.87,0,0,63.87,0,142.66s63.87,142.66,142.66,142.66c50.32,0,94.55-26.05,119.95-65.4-6.98-5.7-13.2-11.98-18.52-18.74ZM217.03,233.09c-3.92,3.23-8.06,6.21-12.39,8.92v-41.2l12.39,32.28ZM142.66,39.36l39.66,103.31h-79.32l39.66-103.31ZM96.77,110.43V34.92c10.11-4.31,20.94-7.24,32.27-8.55l-32.27,84.06ZM188.61,110.57l-32.32-84.21c11.35,1.32,22.2,4.25,32.32,8.58v75.63ZM25.58,142.66c0-41.93,22.04-78.71,55.16-99.39v108.9l-26.02,67.79c-18.14-20.62-29.14-47.67-29.14-77.3ZM80.74,200.66v41.39c-4.35-2.72-8.51-5.71-12.45-8.95l12.45-32.43ZM96.77,250.4v-88.33h91.84v88.31c-14.11,6.03-29.64,9.36-45.95,9.36s-31.8-3.33-45.89-9.34Z"/>
+      <path class="cls-6" d="M244.92,215.76c-22.81,31.86-60.13,52.62-102.29,52.62-69.43,0-125.72-56.29-125.72-125.72S73.19,16.94,142.63,16.94c42.17,0,79.49,20.76,102.29,52.62,2.15-1.95,4.38-3.83,6.69-5.64-24.43-33.75-64.14-55.71-108.99-55.71C68.38,8.21,8.18,68.41,8.18,142.66s60.19,134.45,134.45,134.45c44.85,0,84.56-21.96,108.99-55.71-2.31-1.81-4.54-3.69-6.69-5.64Z"/>
+    </g>
+  </g>
+  <g id="Capa_7" data-name="Capa 7">
+    <g>
+      <text class="cls-3" transform="translate(270.25 107.75)"><tspan class="cls-1" x="0" y="0">APROPEC</tspan><tspan class="cls-5" x="391.11" y="0">U</tspan><tspan class="cls-1" x="448.92" y="0">ARIA</tspan></text>
+      <text class="cls-2" transform="translate(266.9 201.37)"><tspan x="0" y="0">CHIQUIQUE</tspan></text>
+      <rect class="cls-4" x="270.26" y="227.85" width="648.04" height="7.58"/>
+    </g>
+  </g>
+</svg>

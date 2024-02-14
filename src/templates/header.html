@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="es.css">
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='gestion.css') }}">
+
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="img/cq.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='img/cq.png') }}" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+    <title>Chiquique</title>
+</head>
+<body class="contenido_principal">
+
+    <header class="header">
+        <div class="h-izquierda">
+            <a href="index.html">
+                <img src="{{ url_for('static', filename='img/acc.png') }}" alt="Imagen 1">
+            </a>
+            <h1 id="greeting">Buenos días</h1>
+        </div>
+        <div class="h-derecha">
+            <a href="">
+                <ion-icon name="notifications-outline"></ion-icon>
+                <div class="notificacion" id="notify"></div>
+                <!--<i class="fa-solid fa-bell"></i>-->
+            </a>
+            
+            <div class="date">
+                <div class="reloj" id="watch"></div>
+                <div class="fecha" id="fecha"></div>
+            </div>
+            
+            <div class="switch" id="themeSwitch">
+                <i class='bx bxs-sun'></i>
+                <i class='bx bxs-moon' ></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="menu_lateral">
+        <div class="contendor_nav">
+            <nav class="nav">
+                <ul>
+                    <li>
+                        <a href="{{ url_for('home') }}">
+                            <ion-icon name="grid-outline"></ion-icon>
+                            <!--<i class="fa-solid fa-house"></i>-->
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('info_gestion') }}">
+                            <ion-icon name="folder-outline"></ion-icon>
+                            Gestionar potreros
+                        </a>
+                    </li>                    
+                    <li>
+                        <a href="">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <!--<i class="fa-solid fa-down-left-and-up-right-to-center"></i>-->
+                            Aforo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <ion-icon name="save-outline"></ion-icon>
+                            <!--<i class="fa-solid fa-file-export"></i>-->
+                            Exportar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <ion-icon name="reader-outline"></ion-icon>
+                            <!--<i class="fa-solid fa-clock-rotate-left"></i>-->
+                            Historial
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <!--<i class="fa-solid fa-gear"></i>-->
+                            Ajustes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="confirmarSalida()">
+                            <ion-icon name="log-in-outline"></ion-icon>
+                            Salir
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <main class="main">

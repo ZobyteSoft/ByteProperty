@@ -1,0 +1,27 @@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Al escribir en el campo de filtro
+        $("#filtro").on("input", function() {
+            var filtro = $(this).val().toUpperCase();
+            $("#opciones option").each(function() {
+                var textoOpcion = $(this).text().toUpperCase();
+                $(this).toggle(textoOpcion.includes(filtro));
+            });
+        });
+    });
+</script>
+
+<form>
+    <label for="filtro">Filtrar opciones:</label>
+    <input type="text" id="filtro" name="filtro">
+    
+    <label for="opciones">Selecciona:</label>
+    <select id="opciones" name="opciones" size="2">
+        <option value="opcion1">Delirio 1</option>
+        <option value="opcion2">alfalfa 2</option>
+        <option value="opcion3">Alfalfa 3</option>
+        <!-- Agrega más opciones según sea necesario -->
+    </select>
+</form>

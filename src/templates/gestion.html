@@ -1,0 +1,172 @@
+{% include ('header.html') %}
+
+<div class="titulo_principal">
+  <h2>GESTIONAR</h2>
+</div>
+
+<div class="contenedor_gestionar_potreros">
+  <nav class="nav_gestionar_potreros">
+
+      <a href="{{ url_for('info_gestion') }}">Informes</a>
+      <a href="{{ url_for('rmostrar') }}">Rotar</a>
+      <a href="{{ url_for('registerpotrero') }}">Potreros</a>
+    <div class="linea_nav_gestionar"></div>
+    <div class="animation start-home"></div>
+  </nav>
+
+  <div class="contenedor_tabla_potreros">
+    <table id="tabla_potreros_completa" class="tabla_potreros_completa">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Area</th>
+          <th>Promedio-Dias</th>
+          <th>Tipo Pastura</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JULIA</td>
+          <td>holda</td>
+          <td>hola</td>
+          <td>hola</td>
+          <td>hola</td>
+          <td>hola</td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+
+
+
+  .contenedor_tabla_potreros .nav_gestionar_potreros {
+    position: relative;
+    width: auto;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 0;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .linea_nav_gestionar {
+            width: 100%;
+            height: 4px;
+            background: #0000003c;
+            border-right: 1px solid #0000003c;
+        }
+    
+    
+        .contenedor_tabla_potreros {
+            width: 100%;
+        }
+    
+        .contenedor_tabla_potreros .tabla_potreros {
+            width: 100%;
+        }
+    
+      .nav_gestionar_potreros {
+        position: relative;
+        width: auto;
+        height: 50px;
+        border-radius: 8px;
+        font-size: 0;
+        color: #fff;
+        margin-bottom: 20px;
+    
+      }
+    
+      body.active .nav_gestionar_potreros a {
+        color: #fff;
+      }
+    
+      .nav_gestionar_potreros a {
+        font-size: 18px;
+        text-decoration: none;
+        color: #000;
+        line-height: 50px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        text-align: center;
+      }
+    
+      .nav_gestionar_potreros .animation {
+        position: absolute;
+        height: 4px;
+        bottom: -8%;
+        z-index: 0;
+        background: #019A54;
+        border-radius: 8px;
+        transition: all 0.5s ease 0s;
+      }
+    
+      .nav_gestionar_potreros a:nth-child(1) {
+        width: 100px;
+      }
+    
+      .nav_gestionar_potreros .start-home,.nav_gestionar_potreros a:nth-child(1):hover~.animation {
+        width: 100px;
+        left: 0;
+      }
+      .nav_gestionar_potreros a:nth-child(2) {
+        width: 110px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:nth-child(3) {
+        width: 100px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:nth-child(4) {
+        width: 160px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:nth-child(5) {
+        width: 120px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:hover ~ .animation {
+        transition: var(--transicion);
+      }
+    
+      .nav_gestionar_potreros a:nth-child(1):hover ~ .animation {
+        width: 100px;
+        left: 0;
+      }
+    
+      .nav_gestionar_potreros a:nth-child(2):hover ~ .animation {
+        width: 110px;
+        left: 100px;
+      }
+    
+      .nav_gestionar_potreros a:nth-child(3):hover ~ .animation {
+        width: 100px;
+        left: 210px;
+      }
+    
+      .nav_gestionar_potreros a:nth-child(4):hover ~ .animation {
+        width: 160px;
+        left: 310px;
+      }
+    
+      .nav_gestionar_potreros a:nth-child(5):hover ~ .animation {
+        width: 120px;
+        left: 470px;
+      }
+</style>
+
+{% include ('footer.html') %}

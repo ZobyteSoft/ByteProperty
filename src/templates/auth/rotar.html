@@ -1,0 +1,186 @@
+{% extends './base.html' %}
+
+{% block title %}Registrar Potrero{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<style>
+    /* Estilos para el formulario */
+    #form {
+        max-width: 400px;
+        margin: auto;
+        padding: 15px;
+        margin-top: 50px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+    }
+
+    #form img {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    #form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    #form input,
+    #form select,
+    #form button {
+        margin-bottom: 15px;
+    }
+
+    /* Estilos para la tabla */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #dee2e6;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    td a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    td a:hover {
+        text-decoration: underline;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<form id="form" class="form-signin" action="{{ url_for('rotarlote') }}" method="POST">
+    <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <br />
+            {% for message in messages %}
+                <div class="alert alert-primary alert-dismissible" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label for="filtro">Filtrar opciones:</label>
+    <input type="text" id="filtro" name="filtro" oninput="filtrarOpciones()">
+    <div class="form-floating">
+        <select class="form-control" id="opcioness" name="potrero">
+            <option value="" selected disabled>Selecciona el Potrero</option>
+            {% for opcionP in opcionesP %}
+                <option value="{{ opcionP.idpotrero }}">{{ opcionP.nombre }}</option>
+            {% endfor %}
+        </select>
+        <label for="selectEstadoPotrero">Estado Potrero</label>
+    </div>
+
+    <div class="form-floating">
+        <select class="form-control" id="opciones" name="lote">
+            <option value="" selected disabled>Selecciona el Lote</option>
+            {% for opcionL in opcionesL %}
+                <option value="{{ opcionL.idlote }}">{{ opcionL.nombre }}</option>
+            {% endfor %}
+        </select>
+        <label for="selectEstadoPotrero">Lote</label>
+    </div>
+
+    <div class="form-check text-start my-3">
+        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+    </div>
+
+    <button id="submitButton" class="btn btn-primary w-100 py-2" type="submit">Register</button>
+
+    <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>ID POTRERO</th>
+            <th>NOMBRE</th>
+            <th>ZONA</th>
+            <th>PASTURA</th>
+            <th>ESTADO</th>
+            <th>DIAS TRANSCURRIDOS</th>
+            <th>OBSERVACION</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for infopotrero in potrero %}
+        <tr>
+            <td>{{usuario[0]}}</td>
+            <td>{{usuario[1]}}</td>
+            <td>{{usuario[2]}}</td>
+            <td>{{usuario[3]}}</td>
+            <td>{{usuario[4]}}</td>
+            <td>{{usuario[5]}}</td>
+            <td>{{usuario[6]}}</td>
+            <td><a href="/modificausuario/{{usuario[0]}}">Modificar</a>
+                <a href="/borrausuario/{{usuario[0]}}"> Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        // Al escribir en el campo de filtro
+        $("#filtro").on("input", function() {
+            var filtro = $(this).val().toUpperCase();
+            $("#opciones option").each(function() {
+                var textoOpcion = $(this).text().toUpperCase();
+                $(this).toggle(textoOpcion.includes(filtro));
+            });
+        });
+    });
+    
+    $(document).ready(function() {
+        // Al seleccionar una opción
+        $("#opciones").on("change", function() {
+            var opcionSeleccionada = $(this).val();
+            console.log("Opción seleccionada:", opcionSeleccionada);
+
+            // Realizar una solicitud al servidor para obtener datos basados en la opción seleccionada
+            $.ajax({
+                url: "/rotarlote",  // Reemplaza "/obtener_datos" con la ruta adecuada en tu aplicación
+                method: "POST",
+                data: { opcion: opcionSeleccionada },
+                success: function(data) {
+                    // Mostrar los datos recibidos del servidor
+                    console.log("Datos del servidor:", data);
+                    // Actualizar la interfaz con los datos recibidos
+                    // Aquí puedes realizar acciones adicionales con los datos recibidos
+                },
+                error: function(error) {
+                    console.error("Error al obtener datos:", error);
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

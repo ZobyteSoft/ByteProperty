@@ -1,0 +1,126 @@
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+{% endblock %}
+
+{% include ('header.html') %}
+
+<div class="titulo_principal">
+    <h2>DASHBOARD</h2>
+</div>
+
+        <div class="contenedor_dashboard">
+            <div class="principal_1">
+                <div class="estadisticas">
+                    <div class="card">
+                        <div class="conteo">
+                            <div class="icono">
+                                <h2>{{ total_potreros }}</h2>
+                                <ion-icon name="battery-dead-outline"></ion-icon>
+                            </div>
+                            <h4>Potreros en descanso</h4>
+                        </div>
+                    </div>
+                    
+
+                    <div class="card">
+                        <div class="conteo">
+                            <div class="icono">
+                                <h2>103</h2>
+                                <ion-icon name="battery-full-outline"></ion-icon>
+                            </div>
+                            <h4>Potreros ocupados</h4>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="conteo">
+                            <div class="icono">
+                                <div>
+                                    <h2>78<span class="numero_pequeño">/162</span</h2>
+                                </div>
+                                
+                                <ion-icon name="water-outline" class="icono_fertilizar"></ion-icon>
+                            </div>
+                            <h4>Potreros fertilizados</h4>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="conteo">
+                            <div class="icono">
+                                <h2>11</h2>
+                                <ion-icon name="alert-circle-outline"></ion-icon>
+                            </div>
+                            <h4>Potreros con problemas</h4>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="tabla_resumen">
+                    <div class="nombre_tabla">
+                        <h2>
+                            Resumen
+                        </h2>
+                        <h4>
+                            <a >Ver todo</a>
+                        </h4>
+                    </div>
+                    
+
+
+                    {% if nombre_potrero %}
+                    <table id="tabla_resumen" class="display">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Ubicacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mostrar in nombre_potrero %}
+                            <tr>
+                                <td>{{mostrar.nombre}}</td>
+                                <td>{{mostrar.zona}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>no hay datos</p>
+                    {% endif %}
+    
+                </div><!-- 
+                <select name="select-location" id="select-location">
+                    <option value="-1">selecciones  una opcion</option>
+                    <option value="3.829134, -76.399980">Potrero 1</option>
+                </select> -->
+            </div>
+            <div class="principal_2">
+                <div class="mapa" id="mapa">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1jCHw1jPFDFxVw_aOZR1_z47Mn5AaTbo&ehbc=2E312F"></iframe>
+                </div>
+            </div>
+
+        </div>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script> -->
+
+        <style>
+            .dataTables_length {
+    display: none;
+    
+}
+
+#tabla_resumen_filter {
+    display: none;
+}
+
+.dataTables_info {
+    display: none;
+}
+        </style>
+        
+{% include ('footer.html') %}

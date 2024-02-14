@@ -1,0 +1,123 @@
+</main>
+
+<footer class="footer">
+    <a href="">
+        
+        <img src="{{ url_for('static', filename='img/logo_zobyte_solution.png') }}" alt="Imagen 1">
+    </a>
+    <ion-icon name="close-outline"></ion-icon>
+    <a href="index.html">
+      <img src="{{ url_for('static', filename='img/accw.png') }}" alt="Imagen 1">
+  </a>
+    <h3>Version de prueba.</h3>
+</footer>
+
+<style>
+  ion-icon {
+    color: #fff;
+  }
+</style>
+
+
+
+
+
+
+<script>
+    function cargarPagina(url) {
+      fetch(url, { method: 'GET' })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('contenido').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+<script>
+  function confirmarSalida() {
+      var confirmacion = confirm("¿Estás seguro de que deseas cerrar sesión?");
+      if (confirmacion) {
+          window.location.href = "";
+      }
+  }
+   
+  function consultarBaseDeDatos() {
+        var selectedPotrero = document.getElementById('opcioness').value;
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data.zona);
+                    alert("Recuerda colocar los dias de descanso programados")
+                    document.getElementById('dias').value = 30;
+                    document.getElementById('zona').value = data.zona;
+                    document.getElementById('estado').value = data.estado;
+                } else {
+                    console.error("Error al obtener datos");
+                }
+            }
+        };
+        xhttp.open("GET", "/mostrarinfo?potrero=" + selectedPotrero, true);
+        xhttp.send();
+
+
+    }function consultarBaseDeDatoslote() {
+        var selectedLote = document.getElementById('opciones').value;
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data.zona);
+                    document.getElementById('ubicacion').value = data.ubicacion;
+                    document.getElementById('lote-nombre').value = data.nombre;
+                } else {
+                    console.error("Error al obtener datos");
+                }
+            }
+        };
+        xhttp.open("GET", "/mostrarinfolote?lote=" + selectedLote, true);
+        xhttp.send();
+    }
+ /*    let map = L.map('mapa').setView([3.818982,-76.39274,18.25],30)
+ */
+/* //Agregar tilelAyer mapa base desde openstreetmap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    document.getElementById('select-location').addEventListener('change',function(e){
+      let coords = e.target.value.split(",");
+      map.flyTo(coords,30);
+    }) */
+</script>
+
+
+
+
+  
+
+<script src="{{ url_for('static', filename='tabla_resumen.js') }}"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+const staticUrl = "{{ url_for('static', filename='') }}";
+const defaultFooterImage = "{{ url_for('static', filename='img/logo_zobyte_solution.png') }}";
+const activeFooterImage = "{{ url_for('static', filename='img/logo_zobyte_solution_white.png') }}";
+const defaultHeaderImage = "{{ url_for('static', filename='img/acc.png') }}";
+const activeHeaderImage = "{{ url_for('static', filename='img/accw.png') }}";
+</script>
+<script src="{{ url_for('static', filename='dark.js') }}"></script>
+
+
+
+<script src="{{ url_for('static', filename='reloj.js') }}"></script>
+<script src="{{ url_for('static', filename='fecha.js') }}"></script>
+<script src="https://kit.fontawesome.com/c979dda6ec.js" crossorigin="anonymous"></script>
+</body>
+</html>
