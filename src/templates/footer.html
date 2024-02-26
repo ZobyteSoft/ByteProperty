@@ -1,13 +1,13 @@
-</main >
+</main>
 
-<footer class="footer">
+<footer class="footer" style="position: sticky;">
     <a href="">
         
-        <img src="{{ url_for('static', filename='img/logo_zobyte_solution_white.png') }}" alt="Imagen 1">
+        <img src="{{ url_for('static', filename='img/logo_zobyte_solution.png') }}" alt="Imagen 1">
     </a>
     <ion-icon name="close-outline"></ion-icon>
     <a href="index.html">
-      <img src="{{ url_for('static', filename='img/accw2.png') }}" alt="Imagen 1">
+      <img src="{{ url_for('static', filename='img/accw.png') }}" alt="Imagen 1">
   </a>
     <h3>Version de prueba.</h3>
 </footer>
@@ -17,385 +17,6 @@
     color: #fff;
   }
 </style>
-
-
-<!-- MODAL CERRAR SESION -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      var btnModalCancelar = document.getElementById("btn_modal_cancelar");
-      var btnModalCancelarIcono = document.getElementById("btn_modal_cancelar_icono");
-
-      // Función para cerrar el modal
-      function cerrarModal() {
-          var cerrarModal = document.querySelector(".cerrar_modal");
-          cerrarModal.click();
-      }
-
-      btnModalCancelar.addEventListener("change", function() {
-          if (this.checked) {
-              cerrarModal();
-              // Desactivar el checkbox después de 1 segundo
-              setTimeout(function() {
-                  btnModalCancelar.checked = false;
-              }, 1000);
-          }
-      });
-
-      btnModalCancelarIcono.addEventListener("change", function() {
-          if (this.checked) {
-              cerrarModal();
-              // Desactivar el checkbox después de 1 segundo
-              setTimeout(function() {
-                  btnModalCancelarIcono.checked = false;
-              }, 1000);
-          }
-      });
-  });
-</script>
-<!-- MODAL CERRAR SESION -->
-
-
-
-
-
-
-
-  <!-- MODAL BORRAR POTRERO  -->
-  <script>
-    const btnModalBorrarPotrero = document.getElementById('btn_eliminar_potrero_cero');
-    const btnCloseModalIconBorrarPotrero = document.getElementById('btn_modal_icono_borrar_potrero');
-    const btnCancelModalBorrarPotrero = document.getElementById('btn_modal_cancelar_borrar_potrero');
-    const contenedorModalBorrarPotrero = document.querySelector('.contenedor_modal_borrar_potrero');
-
-    btnModalBorrarPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalBorrarPotrero.style.display = 'flex';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        } else {
-            contenedorModalBorrarPotrero.style.display = 'none';
-        }
-    });
-
-    btnCloseModalIconBorrarPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalBorrarPotrero.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-
-    btnCancelModalBorrarPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalBorrarPotrero.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-  </script>
-  <!-- MODAL BORRAR POTRERO  -->
-
-
-
-
-
-
-
-
-
-
-  <!-- MODAL BORRAR LOTE  -->
-  <script>
-    const btnAbrirModalBorrarLote = document.getElementById('btn_abrir_eliminar_lote');
-    const btnCloseModalIconBorrarLote = document.getElementById('btn_modal_icono_borrar_lote');
-    const btnCancelModalBorrarLote = document.getElementById('btn_modal_cancelar_borrar_lote');
-    const contenedorModalBorrarLote = document.querySelector('.contenedor_modal_borrar_lote');
-
-    btnAbrirModalBorrarLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalBorrarLote.style.display = 'flex';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        } else {
-            contenedorModalBorrarLote.style.display = 'none';
-        }
-    });
-
-    btnCloseModalIconBorrarLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalBorrarLote.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-
-    btnCancelModalBorrarLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalBorrarLote.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-  </script>
-  <!-- MODAL BORRAR LOTE  -->
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- SCRIPT PARA ABRIR Y CERRAR MODAL CREAR LOTE -->
-<script>
-    const btnModalCrearLote = document.getElementById('btn_modal_crearlote');
-    const btnCloseModalLote = document.getElementById('btn_close_modal_lote');
-    const btnCancelModalLote = document.getElementById('btn_cancelar_modal_lote');
-    const contenedorModalCrearLote = document.querySelector('.contenedor_modal_crear_lote');
-
-    btnModalCrearLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalCrearLote.style.display = 'flex';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        } else {
-            contenedorModalCrearLote.style.display = 'none';
-        }
-    });
-
-    btnCloseModalLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalCrearLote.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-
-    btnCancelModalLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalCrearLote.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-</script>
-<!-- SCRIPT PARA ABRIR Y CERRAR MODAL CREAR LOTE -->
-
-
-
-
-
-
-
-
-
-<!-- MODAL EDITAR LOTE -->
-<script>
-    const btnModalEditarLote = document.getElementById('btn_abrir_editar_lote');
-    const btnCloseModalEditarLote = document.getElementById('btn_close_modal_editar_lote');
-    const btnCancelModalEditarLote = document.getElementById('btn_cancelar_modal_editar_lote');
-    const contenedorModalEditarLote = document.querySelector('.contenedor_modal_editar_lote_2');
-
-    btnModalEditarLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalEditarLote.style.display = 'flex';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        } else {
-            contenedorModalEditarLote.style.display = 'none';
-        }
-    });
-
-    btnCloseModalEditarLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalEditarLote.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-
-    btnCancelModalEditarLote.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalEditarLote.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-</script>
-<!-- MODAL EDITAR LOTE -->
-
-
-
-
-
-
-
-
-<!-- SCRIPT PARA ABRIR Y CERRAR MODAL EDITAR POTREROS -->
-<script>
-    const btnModalEditarPotrero = document.getElementById('btn_editar_potrero_cero');
-    const btnCloseModalEditarPotrero = document.getElementById('btn_close_modal_potrero');
-    const btnCancelModalEditarPotrero = document.getElementById('btn_cancelar_modal_potrero');
-    const contenedorModalEditarPotrero = document.querySelector('.contenedor_modal_lista_potreros');
-
-    btnModalEditarPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalEditarPotrero.style.display = 'flex';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        } else {
-            contenedorModalEditarPotrero.style.display = 'none';
-        }
-    });
-
-    btnCloseModalEditarPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalEditarPotrero.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-
-    btnCancelModalEditarPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalEditarPotrero.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-</script>
-<!-- SCRIPT PARA ABRIR Y CERRAR MODAL EDITAR POTREROS -->
-
-
-
-
-
-
-
-<!-- SCRIPT PARA ABRIR Y CERRAR MODAL CREAR POTRERO -->
-<script>
-    const btnAbrirModalCrearPotrero = document.getElementById('modal_potrero_crear');
-    const btnCloseModalCrearPotrero = document.getElementById('btn_close_modal_crear_potrero');
-    const btnCancelModalCrearPotrero = document.getElementById('btn_cancelar_modal_crearpotrero');
-    const contenedorModalCrearPotrero = document.querySelector('.contenedor_modal_crear_nuevo_potreros');
-
-    btnAbrirModalCrearPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalCrearPotrero.style.display = 'flex';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        } else {
-            contenedorModalCrearPotrero.style.display = 'none';
-        }
-    });
-
-    btnCloseModalCrearPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalCrearPotrero.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-
-    btnCancelModalCrearPotrero.addEventListener('change', function() {
-        if (this.checked) {
-            contenedorModalCrearPotrero.style.display = 'none';
-            setTimeout(() => {
-                this.checked = false;
-            }, 1000);
-        }
-    });
-</script>
-<!-- SCRIPT PARA ABRIR Y CERRAR MODAL CREAR POTRERO -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    
-    function consultarmapa() {
-    var selectedgps1 = document.getElementById('gpsurl').value;
-    var urlmaps = ["https://www.google.com/maps/d/embed?mid=1jCHw1jPFDFxVw_aOZR1_z47Mn5AaTbo&ehbc=2E312F","https://www.google.com/maps/d/u/0/embed?mid=1RW_8Ga5fnsXMf14g_Y1LDCN5OZ84zSE&ehbc=2E312F", "https://www.google.com/maps/d/u/0/embed?mid=1VprrA9jUn4qGz353VEg4OJvuoM_Bpyc&ehbc=2E312F"]
-    if (selectedgps1 == 1) {
-        var selectedgps2 = document.getElementById('geolocalizacion');
-        selectedgps2.setAttribute('src', urlmaps[0]);
-    }
-    if (selectedgps1 == 2) {
-        var selectedgps2 = document.getElementById('geolocalizacion');
-        selectedgps2.setAttribute('src', urlmaps[1]);
-    }
-    if (selectedgps1 == 3) {
-        var selectedgps2 = document.getElementById('geolocalizacion');
-        selectedgps2.setAttribute('src', urlmaps[2]);
-    }
-}
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -413,13 +34,12 @@
     }
 </script>
 
-
-
 <script>
+  var labelbuscar = document.getElementById('tabla_potreros_completa_filter');
   function confirmarSalida() {
       var confirmacion = confirm("¿Estás seguro de que deseas cerrar sesión?");
       if (confirmacion) {
-          window.location.href = "";
+          window.location.href = "/home";
       }
   }
    
@@ -432,6 +52,8 @@
                 if (this.status == 200) {
                     var data = JSON.parse(this.responseText);
                     console.log(data.zona);
+                    alert("Recuerda colocar los dias de descanso programados")
+                    document.getElementById('dias').value = 30;
                     document.getElementById('zona').value = data.zona;
                     document.getElementById('estado').value = data.estado;
                 } else {
@@ -440,6 +62,26 @@
             }
         };
         xhttp.open("GET", "/mostrarinfo?potrero=" + selectedPotrero, true);
+        xhttp.send();
+
+
+    }function consultarBaseDeDatoslote() {
+        var selectedLote = document.getElementById('opciones').value;
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data.zona);
+                    document.getElementById('ubicacion').value = data.ubicacion;
+                    document.getElementById('lote-nombre').value = data.nombre;
+                } else {
+                    console.error("Error al obtener datos");
+                }
+            }
+        };
+        xhttp.open("GET", "/mostrarinfolote?lote=" + selectedLote, true);
         xhttp.send();
     }
  /*    let map = L.map('mapa').setView([3.818982,-76.39274,18.25],30)
@@ -460,7 +102,7 @@
 
   
 
-
+<script src="{{ url_for('static', filename='tabla_resumen.js') }}"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -469,36 +111,14 @@ const staticUrl = "{{ url_for('static', filename='') }}";
 const defaultFooterImage = "{{ url_for('static', filename='img/logo_zobyte_solution.png') }}";
 const activeFooterImage = "{{ url_for('static', filename='img/logo_zobyte_solution_white.png') }}";
 const defaultHeaderImage = "{{ url_for('static', filename='img/acc.png') }}";
-const activeHeaderImage = "{{ url_for('static', filename='img/accw2.png') }}";
+const activeHeaderImage = "{{ url_for('static', filename='img/accw.png') }}";
 </script>
-<!-- <script src="{{ url_for('static', filename='dark.js') }}"></script> -->
+<script src="{{ url_for('static', filename='dark.js') }}"></script>
 
 
 
 <script src="{{ url_for('static', filename='reloj.js') }}"></script>
 <script src="{{ url_for('static', filename='fecha.js') }}"></script>
-
-
-<script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/dataTables.buttons.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.dataTables.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.print.min.js"></script>
-
-
-
-<script src="{{ url_for('static', filename='tabla_resumen.js') }}"></script>
-
-
-<script>
-    document.getElementById('tabla_potreros_completa').removeAttribute('style');
-</script>
-
-
 <script src="https://kit.fontawesome.com/c979dda6ec.js" crossorigin="anonymous"></script>
-
 </body>
 </html>

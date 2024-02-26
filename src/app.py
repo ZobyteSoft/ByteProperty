@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_mysqldb import MySQL
+from datetime import datetime, timedelta
 from config import config
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager, login_user, logout_user, login_required
@@ -14,7 +15,7 @@ from models.ModelPotreros import ModelPotreros
 from models.ModelLote import ModelLote
 #ENTITIES
 from models.entities.user import User
-from models.entities.potreros import Potrero
+from models.entities.potreros import Potrero, Registrarrotacion
 from models.entities.lote import Lote
 
 app = Flask(__name__, template_folder='templates')
@@ -48,7 +49,7 @@ def login():
                 flash('Invalid Password...')  
                 return render_template('auth/login.html')
         else:
-            flash('User not found...')
+            flash('User not found...')  
             return render_template('auth/login.html')
     else:
         return render_template('auth/login.html')
@@ -59,12 +60,13 @@ def registeruser():
 
 @app.route('/guardaruser', methods=['POST'])
 def guardaruser():
-    userName = request.form['username']
-    fullname = request.form['fullname']
-    password = request.form['password']
-    if userName and fullname and password:
-        user = User(0, request.form['username'], request.form['password'], request.form['fullname'])
-        registrado = ModelUser.register(db, user)
+    user = User(0, request.form['username'], request.form['password'], request.form['fullname'])
+    registrado = ModelUser.register(db, user)
+
+    if registrado:
+        flash('Usuario registrado con éxito')
+    else:
+        flash('Error al registrar el usuario')
 
     return redirect(url_for('registeruser'))
 """ End Code User """
@@ -73,15 +75,6 @@ def guardaruser():
 def registerpotrero():
     return render_template('auth/registrarpotrero.html')
 
-@app.route('/listapotreros')
-def listapotreros():
-    return render_template('listar_potreros.html')
-
-@app.route('/lotes')
-def lotes():
-    return render_template('lotes.html')
-
-
 @app.route('/nuevopotrero', methods=['GET', 'POST'])
 def nuevopotrero():
     if request.method == 'POST':
@@ -89,9 +82,17 @@ def nuevopotrero():
         print(request.form['password']) """
         potrero = Potrero(0, request.form['nombrepotrero'].strip(),request.form['zonapotrero'],request.form['areapotrero'],request.form['diaspotrero'],request.form['paturapotrero'],request.form['estadopotrero'], request.form['coordenadapotrero'],request.form['observacionpotrero'])
         result = ModelPotreros.nuevo(db, potrero)
-        return render_template('gestion.html')
+        return render_template('auth/registrarpotrero.html')
     else:
-        return render_template('gestion.html')
+        return render_template('auth/registrarpotrero.html')
+@app.route('/mostrarregistros')
+def mostrarregistros():
+    try:
+        registros = ModelPotreros.mostrarRegistros(db)
+        return render_template('gestion.html', registros=registros)
+    except Exception as ex:
+        # Maneja cualquier excepción que pueda ocurrir
+        return f"Error: {ex}"
 
 @app.route('/rmostrar')
 def rmostrar():
@@ -99,14 +100,22 @@ def rmostrar():
     opcionesL = ModelPotreros.mostrarOpcionesLotes(db)
     return render_template('gestionar_rotacion.html', opcionesP=opcionesP, opcionesL=opcionesL)
 
-@app.route('/rotarlote', methods=['POST'])
+@app.route('/rmostrar', methods=['POST'])
 def rotarlote():
     try:
+        opcionesP = ModelPotreros.mostrarOpcionesPotreros(db)                                         
+        opcionesL = ModelPotreros.mostrarOpcionesLotes(db)
+        opcionesP = ModelPotreros.mostrarOpcionesPotreros(db)                                         
+        opcionesL = ModelPotreros.mostrarOpcionesLotes(db)
         opcion_seleccionada = request.form.get('lote')
         opcion_seleccionadap = request.form.get('potrero')
+        fechaselec = request.form.get('fecha-entrada')
+        diasselec = int(request.form.get('dias'))
+        estado = request.form.get('estado')
+        observacion = request.form.get('observacion')
+
         print("Opción seleccionada:", opcion_seleccionada)
         print("Opción seleccionada:", opcion_seleccionadap)
-
 
         consulta = ModelPotreros.mostrar(db, opcion_seleccionada)
         print("Consulta:", consulta)
@@ -115,15 +124,20 @@ def rotarlote():
         if consulta:
             idpotrero = opcion_seleccionadap
             idlote = opcion_seleccionada
+            fecha = fechaselec
+            diasProgramados = diasselec
+            estadoinput = estado
+            observacioninput = observacion
+
+            print(f"{fecha} y y {diasProgramados}")
 
             cursor = db.connection.cursor()
-            sql = '''SELECT idpotrero FROM lotes WHERE idpotrero = %s '''
+            sql = '''SELECT idpotrero FROM lotes WHERE idpotrero = %s'''
             cursor.execute(sql, (idpotrero,))
             tubo = cursor.fetchone()
             print(tubo)
 
             if tubo:
-                flash('El potrero esta Ocupado revisa las salidas')
                 return render_template('gestionar_rotacion.html')
             else:
                 sqlall = "SELECT * FROM potreros WHERE idpotrero = %s"
@@ -134,16 +148,33 @@ def rotarlote():
                 ptrocu = cursor.fetchone()
                 if ptrocu:
                     potreroid = ptrocu[0]  
-                    potrero = potreroid
+                    potrero = potreroid 
                     sqls = 'UPDATE `potreros` SET `estado`= "Descanso/Recuperacion" WHERE idpotrero = %s'
+                    
+                    fecha_salida = datetime.strptime(fecha, '%Y-%m-%d') + timedelta(days=diasProgramados)
+                    fecha_entrada = datetime.strptime(fecha, '%Y-%m-%d') + timedelta(days=2)
+                    # Utilizando marcadores de posición para la consulta SQL
+                    registrosalida = '''
+                        INSERT INTO registrosrotacion (idpotrero, entradasalida, fecharotacion, posiblereingreso, estado, idlote, oservacion)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    '''
+                    registroEntrada = '''
+                        INSERT INTO registrosrotacion (idpotrero, entradasalida, fecharotacion, posiblereingreso, estado, idlote, oservacion)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    '''
+                    valores_registro = (potrero, 'SALIDA', fecha,  fecha_salida.strftime('%Y-%m-%d'), 'Descanso/Recuperacion', idlote, observacion)
+                    valores_registroE = (idpotrero, 'ENTRADA', fecha,  fecha_entrada.strftime('%Y-%m-%d'), 'En Consumo', idlote, observacioninput)
+
                     cursor.execute(sqls, (potrero,))
+                    cursor.execute(registrosalida, valores_registro)
+                    cursor.execute(registroEntrada, valores_registroE)
                     print(potrero)
+
                 else:
                     print("No se encontraron resultados para la consulta.")
 
                 rt = ModelLote.rotar(db, idpotrero, idlote)
-                flash('potrero en consumo')
-                return render_template('gestionar_rotacion.html', potrerosel=potrerosel)
+                return render_template('gestionar_rotacion.html', potrerosel=potrerosel, opcionesP=opcionesP, opcionesL=opcionesL)
 
         else:
             return jsonify({"error": "No se encontraron resultados para la opción seleccionada"}), 404
@@ -151,7 +182,10 @@ def rotarlote():
 
     except Exception as e:
         print("Error:", str(e))
-        return jsonify({"error": str(e)}), 500  # Devuelve un código de estado 500 para indicar un error interno del servidor
+        print("Error en la ruta /rotarlote:", str(e))
+        return jsonify({"error": str(e)}), 500 # Devuelve un código de estado 500 para indicar un error interno del servidor
+    
+
 @app.route('/mostrarinfo', methods=['GET', 'POST'])
 @login_required
 def mostrarinfo():
@@ -166,6 +200,22 @@ def mostrarinfo():
     else:
         print("No mostrar")
         return jsonify({'error': 'No se encontraron datos'})
+@app.route('/mostrarinfolote', methods=['GET', 'POST'])
+@login_required
+def mostrarinfolote():
+    loteselec = request.args.get('lote')
+    lote = loteselec
+    obtdatos = ModelPotreros.mostrarlote(db, lote)
+    if obtdatos:
+        ubicacion = obtdatos[0][0]
+        nombre = obtdatos[0][1]
+        print(f"Esta es la ubicacion¡{ubicacion} ")
+        return jsonify({'ubicacion': ubicacion, 'nombre': nombre})
+    else:
+        print("No mostrar")
+        return jsonify({'error': 'No se encontraron datos'})
+    
+
 
 @app.route('/info_gestion')
 @login_required
@@ -180,7 +230,8 @@ def info_gestion():
 @app.route('/home')
 @login_required
 def home():
-    return render_template('admin.html')
+    obtdatos = ModelPotreros.mostrarOpcionesLotesAdmin(db)
+    return render_template('admin.html', obtdatos=obtdatos)
 
 
 @app.route('/logout')
@@ -199,6 +250,9 @@ def status_401(error):
 
 def status_404(error):
     return "<h1>Página no encontrada Por favor Vuelve</h1>", 404
+
+
+
 
 
 

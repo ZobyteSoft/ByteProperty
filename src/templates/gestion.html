@@ -6,1319 +6,51 @@
 
 <div class="contenedor_gestionar_potreros">
   <nav class="nav_gestionar_potreros">
-    <a href="{{ url_for('info_gestion') }}">Informes</a>
-    <a href="{{ url_for('rmostrar') }}">Rotar</a>
-<!--     <a href="{{ url_for('registerpotrero') }}">Potreros</a> -->
-    <a href="{{ url_for('listapotreros') }}">Listar potreros</a>
-    <a href="{{ url_for('lotes') }}">Lotes</a>
-        <!-- Botón para crear nuevo potrero -->
-        <input type="checkbox" name="" id="modal_potrero_crear" class="modal_potrero_crear">
-        <label for="modal_potrero_crear" class="btn_potrero_crear">
-          <ion-icon name="add-outline"></ion-icon>
-          <h3>Crear nuevo potrero</h3>
-        </label>
 
-        <!-- Botón para crear un nuevo lote -->
-        <input type="checkbox" name="" id="btn_modal_crearlote" class="modal_lote_crear">
-        <label for="btn_modal_crearlote" class="btn_lote_crear">
-          <ion-icon name="add-outline"></ion-icon>
-          <h3>Crear nuevo lote</h3>
-        </label> 
-
-<!--     <input type="checkbox" name="" id="modal_lote_crear" class="modal_lote_crear">
-    <label for="modal_lote_crear" class="btn_lote_crear">
-      <ion-icon name="add-outline"></ion-icon>
-      <h3>Crear nuevo lote</h3>
-    </label>
-
-    <input type="checkbox" name="" id="modal_lote_crear" class="modal_lote_crear">
-    <label for="modal_lote_crear" class="btn_lote_crear">
-      <ion-icon name="add-outline"></ion-icon>
-      <h3>Editar lote</h3>
-    </label> -->
+      <a href="{{ url_for('mostrarregistros') }}">Informes</a>
+      <a href="{{ url_for('rmostrar') }}">Rotar</a>
+      <a href="{{ url_for('registerpotrero') }}">Potreros</a>
     <div class="linea_nav_gestionar"></div>
     <div class="animation start-home"></div>
   </nav>
-
-
-
-
+<!-- data-order='[[0, "des"]]' -->
   <div class="contenedor_tabla_potreros">
-    <table data-order='[[ 0, "des" ]]' id="tabla_potreros_completa" class="tabla_potreros_completa">
-      <thead>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
+    <table data-order='[[0, "des"]]' id="tabla_potreros_completa" class="tabla_potreros_completa" border="1" style="border-color: #019A54; border-radius: 15px; margin-top: 5px;">
+      <thead >
+        <tr style="border-color: transparent;">
+          <th style="display: none;">ID</th>
+          <th>Potrero</th>
+          <th>Lote</th>
+          <th>Entradas/Salidas</th>
+          <th>Fecha Entrada</th>
+          <th>Fech. Aprox</th>
+          <th>Estados en Registro</th>
+          <th>Observacion</th>
+          <th>modificar</th>
         </tr>
-    </thead>
-    <tbody class="tbody">
+      </thead>
+      <tbody>
+        {% for registros in registros %}
         <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011-04-25</td>
-            <td>$320,800</td>
+            <td style="display: none;">{{registros[0]}}</td>
+            <td>{{registros[1]}}</td>
+            <td>{{registros[2]}}</td>
+            <td>{{registros[3]}}</td>
+            <td>{{registros[4]}}</td>
+            <td>{{registros[5]}}</td>
+            <td>{{registros[6]}}</td>
+            <td>{{registros[8]}}</td>
+            <td><a href="/modificausuario/{{registros[0]}}">Modi</a>
+                <a href="/borrausuario/{{registros[0]}}"> Borr</a>
+            </td>
         </tr>
-        <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011-07-25</td>
-            <td>$170,750</td>
-        </tr>
-        <tr>
-            <td>Ashton Cox</td>
-            <td>Junior Technical Author</td>
-            <td>San Francisco</td>
-            <td>66</td>
-            <td>2009-01-12</td>
-            <td>$86,000</td>
-        </tr>
-        <tr>
-            <td>Cedric Kelly</td>
-            <td>Senior Javascript Developer</td>
-            <td>Edinburgh</td>
-            <td>22</td>
-            <td>2012-03-29</td>
-            <td>$433,060</td>
-        </tr>
-        <tr>
-            <td>Airi Satou</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>33</td>
-            <td>2008-11-28</td>
-            <td>$162,700</td>
-        </tr>
-        <tr>
-            <td>Brielle Williamson</td>
-            <td>Integration Specialist</td>
-            <td>New York</td>
-            <td>61</td>
-            <td>2012-12-02</td>
-            <td>$372,000</td>
-        </tr>
-        <tr>
-            <td>Herrod Chandler</td>
-            <td>Sales Assistant</td>
-            <td>San Francisco</td>
-            <td>59</td>
-            <td>2012-08-06</td>
-            <td>$137,500</td>
-        </tr>
-        <tr>
-            <td>Rhona Davidson</td>
-            <td>Integration Specialist</td>
-            <td>Tokyo</td>
-            <td>55</td>
-            <td>2010-10-14</td>
-            <td>$327,900</td>
-        </tr>
-        <tr>
-            <td>Colleen Hurst</td>
-            <td>Javascript Developer</td>
-            <td>San Francisco</td>
-            <td>39</td>
-            <td>2009-09-15</td>
-            <td>$205,500</td>
-        </tr>
-        <tr>
-            <td>Sonya Frost</td>
-            <td>Software Engineer</td>
-            <td>Edinburgh</td>
-            <td>23</td>
-            <td>2008-12-13</td>
-            <td>$103,600</td>
-        </tr>
-        <tr>
-            <td>Jena Gaines</td>
-            <td>Office Manager</td>
-            <td>London</td>
-            <td>30</td>
-            <td>2008-12-19</td>
-            <td>$90,560</td>
-        </tr>
-        <tr>
-            <td>Quinn Flynn</td>
-            <td>Support Lead</td>
-            <td>Edinburgh</td>
-            <td>22</td>
-            <td>2013-03-03</td>
-            <td>$342,000</td>
-        </tr>
-        <tr>
-            <td>Charde Marshall</td>
-            <td>Regional Director</td>
-            <td>San Francisco</td>
-            <td>36</td>
-            <td>2008-10-16</td>
-            <td>$470,600</td>
-        </tr>
-        <tr>
-            <td>Haley Kennedy</td>
-            <td>Senior Marketing Designer</td>
-            <td>London</td>
-            <td>43</td>
-            <td>2012-12-18</td>
-            <td>$313,500</td>
-        </tr>
-        <tr>
-            <td>Tatyana Fitzpatrick</td>
-            <td>Regional Director</td>
-            <td>London</td>
-            <td>19</td>
-            <td>2010-03-17</td>
-            <td>$385,750</td>
-        </tr>
-        <tr>
-            <td>Michael Silva</td>
-            <td>Marketing Designer</td>
-            <td>London</td>
-            <td>66</td>
-            <td>2012-11-27</td>
-            <td>$198,500</td>
-        </tr>
-        <tr>
-            <td>Paul Byrd</td>
-            <td>Chief Financial Officer (CFO)</td>
-            <td>New York</td>
-            <td>64</td>
-            <td>2010-06-09</td>
-            <td>$725,000</td>
-        </tr>
-        <tr>
-            <td>Gloria Little</td>
-            <td>Systems Administrator</td>
-            <td>New York</td>
-            <td>59</td>
-            <td>2009-04-10</td>
-            <td>$237,500</td>
-        </tr>
-        <tr>
-            <td>Bradley Greer</td>
-            <td>Software Engineer</td>
-            <td>London</td>
-            <td>41</td>
-            <td>2012-10-13</td>
-            <td>$132,000</td>
-        </tr>
-        <tr>
-            <td>Dai Rios</td>
-            <td>Personnel Lead</td>
-            <td>Edinburgh</td>
-            <td>35</td>
-            <td>2012-09-26</td>
-            <td>$217,500</td>
-        </tr>
-        <tr>
-            <td>Jenette Caldwell</td>
-            <td>Development Lead</td>
-            <td>New York</td>
-            <td>30</td>
-            <td>2011-09-03</td>
-            <td>$345,000</td>
-        </tr>
-        <tr>
-            <td>Yuri Berry</td>
-            <td>Chief Marketing Officer (CMO)</td>
-            <td>New York</td>
-            <td>40</td>
-            <td>2009-06-25</td>
-            <td>$675,000</td>
-        </tr>
-        <tr>
-            <td>Caesar Vance</td>
-            <td>Pre-Sales Support</td>
-            <td>New York</td>
-            <td>21</td>
-            <td>2011-12-12</td>
-            <td>$106,450</td>
-        </tr>
-        <tr>
-            <td>Doris Wilder</td>
-            <td>Sales Assistant</td>
-            <td>Sydney</td>
-            <td>23</td>
-            <td>2010-09-20</td>
-            <td>$85,600</td>
-        </tr>
-        <tr>
-            <td>Angelica Ramos</td>
-            <td>Chief Executive Officer (CEO)</td>
-            <td>London</td>
-            <td>47</td>
-            <td>2009-10-09</td>
-            <td>$1,200,000</td>
-        </tr>
-        <tr>
-            <td>Gavin Joyce</td>
-            <td>Developer</td>
-            <td>Edinburgh</td>
-            <td>42</td>
-            <td>2010-12-22</td>
-            <td>$92,575</td>
-        </tr>
-        <tr>
-            <td>Jennifer Chang</td>
-            <td>Regional Director</td>
-            <td>Singapore</td>
-            <td>28</td>
-            <td>2010-11-14</td>
-            <td>$357,650</td>
-        </tr>
-        <tr>
-            <td>Brenden Wagner</td>
-            <td>Software Engineer</td>
-            <td>San Francisco</td>
-            <td>28</td>
-            <td>2011-06-07</td>
-            <td>$206,850</td>
-        </tr>
-        <tr>
-            <td>Fiona Green</td>
-            <td>Chief Operating Officer (COO)</td>
-            <td>San Francisco</td>
-            <td>48</td>
-            <td>2010-03-11</td>
-            <td>$850,000</td>
-        </tr>
-        <tr>
-            <td>Shou Itou</td>
-            <td>Regional Marketing</td>
-            <td>Tokyo</td>
-            <td>20</td>
-            <td>2011-08-14</td>
-            <td>$163,000</td>
-        </tr>
-        <tr>
-            <td>Michelle House</td>
-            <td>Integration Specialist</td>
-            <td>Sydney</td>
-            <td>37</td>
-            <td>2011-06-02</td>
-            <td>$95,400</td>
-        </tr>
-        <tr>
-            <td>Suki Burks</td>
-            <td>Developer</td>
-            <td>London</td>
-            <td>53</td>
-            <td>2009-10-22</td>
-            <td>$114,500</td>
-        </tr>
-        <tr>
-            <td>Prescott Bartlett</td>
-            <td>Technical Author</td>
-            <td>London</td>
-            <td>27</td>
-            <td>2011-05-07</td>
-            <td>$145,000</td>
-        </tr>
-        <tr>
-            <td>Gavin Cortez</td>
-            <td>Team Leader</td>
-            <td>San Francisco</td>
-            <td>22</td>
-            <td>2008-10-26</td>
-            <td>$235,500</td>
-        </tr>
-        <tr>
-            <td>Martena Mccray</td>
-            <td>Post-Sales support</td>
-            <td>Edinburgh</td>
-            <td>46</td>
-            <td>2011-03-09</td>
-            <td>$324,050</td>
-        </tr>
-        <tr>
-            <td>Unity Butler</td>
-            <td>Marketing Designer</td>
-            <td>San Francisco</td>
-            <td>47</td>
-            <td>2009-12-09</td>
-            <td>$85,675</td>
-        </tr>
-        <tr>
-            <td>Howard Hatfield</td>
-            <td>Office Manager</td>
-            <td>San Francisco</td>
-            <td>51</td>
-            <td>2008-12-16</td>
-            <td>$164,500</td>
-        </tr>
-        <tr>
-            <td>Hope Fuentes</td>
-            <td>Secretary</td>
-            <td>San Francisco</td>
-            <td>41</td>
-            <td>2010-02-12</td>
-            <td>$109,850</td>
-        </tr>
-        <tr>
-            <td>Vivian Harrell</td>
-            <td>Financial Controller</td>
-            <td>San Francisco</td>
-            <td>62</td>
-            <td>2009-02-14</td>
-            <td>$452,500</td>
-        </tr>
-        <tr>
-            <td>Timothy Mooney</td>
-            <td>Office Manager</td>
-            <td>London</td>
-            <td>37</td>
-            <td>2008-12-11</td>
-            <td>$136,200</td>
-        </tr>
-        <tr>
-            <td>Jackson Bradshaw</td>
-            <td>Director</td>
-            <td>New York</td>
-            <td>65</td>
-            <td>2008-09-26</td>
-            <td>$645,750</td>
-        </tr>
-        <tr>
-            <td>Olivia Liang</td>
-            <td>Support Engineer</td>
-            <td>Singapore</td>
-            <td>64</td>
-            <td>2011-02-03</td>
-            <td>$234,500</td>
-        </tr>
-        <tr>
-            <td>Bruno Nash</td>
-            <td>Software Engineer</td>
-            <td>London</td>
-            <td>38</td>
-            <td>2011-05-03</td>
-            <td>$163,500</td>
-        </tr>
-        <tr>
-            <td>Sakura Yamamoto</td>
-            <td>Support Engineer</td>
-            <td>Tokyo</td>
-            <td>37</td>
-            <td>2009-08-19</td>
-            <td>$139,575</td>
-        </tr>
-        <tr>
-            <td>Thor Walton</td>
-            <td>Developer</td>
-            <td>New York</td>
-            <td>61</td>
-            <td>2013-08-11</td>
-            <td>$98,540</td>
-        </tr>
-        <tr>
-            <td>Finn Camacho</td>
-            <td>Support Engineer</td>
-            <td>San Francisco</td>
-            <td>47</td>
-            <td>2009-07-07</td>
-            <td>$87,500</td>
-        </tr>
-        <tr>
-            <td>Serge Baldwin</td>
-            <td>Data Coordinator</td>
-            <td>Singapore</td>
-            <td>64</td>
-            <td>2012-04-09</td>
-            <td>$138,575</td>
-        </tr>
-        <tr>
-            <td>Zenaida Frank</td>
-            <td>Software Engineer</td>
-            <td>New York</td>
-            <td>63</td>
-            <td>2010-01-04</td>
-            <td>$125,250</td>
-        </tr>
-        <tr>
-            <td>Zorita Serrano</td>
-            <td>Software Engineer</td>
-            <td>San Francisco</td>
-            <td>56</td>
-            <td>2012-06-01</td>
-            <td>$115,000</td>
-        </tr>
-        <tr>
-            <td>Jennifer Acosta</td>
-            <td>Junior Javascript Developer</td>
-            <td>Edinburgh</td>
-            <td>43</td>
-            <td>2013-02-01</td>
-            <td>$75,650</td>
-        </tr>
-        <tr>
-            <td>Cara Stevens</td>
-            <td>Sales Assistant</td>
-            <td>New York</td>
-            <td>46</td>
-            <td>2011-12-06</td>
-            <td>$145,600</td>
-        </tr>
-        <tr>
-            <td>Hermione Butler</td>
-            <td>Regional Director</td>
-            <td>London</td>
-            <td>47</td>
-            <td>2011-03-21</td>
-            <td>$356,250</td>
-        </tr>
-        <tr>
-            <td>Lael Greer</td>
-            <td>Systems Administrator</td>
-            <td>London</td>
-            <td>21</td>
-            <td>2009-02-27</td>
-            <td>$103,500</td>
-        </tr>
-        <tr>
-            <td>Jonas Alexander</td>
-            <td>Developer</td>
-            <td>San Francisco</td>
-            <td>30</td>
-            <td>2010-07-14</td>
-            <td>$86,500</td>
-        </tr>
-        <tr>
-            <td>Shad Decker</td>
-            <td>Regional Director</td>
-            <td>Edinburgh</td>
-            <td>51</td>
-            <td>2008-11-13</td>
-            <td>$183,000</td>
-        </tr>
-        <tr>
-            <td>Michael Bruce</td>
-            <td>Javascript Developer</td>
-            <td>Singapore</td>
-            <td>29</td>
-            <td>2011-06-27</td>
-            <td>$183,000</td>
-        </tr>
-        <tr>
-            <td>Donna Snider</td>
-            <td>Customer Support</td>
-            <td>New York</td>
-            <td>27</td>
-            <td>2011-01-25</td>
-            <td>$112,000</td>
-        </tr>
-    </tbody>
+        {% endfor %}
+      </tbody>
     </table>
   </div>
 </div>
 
-
-
-
-
-
-
-<!-- MODAL CREAR NUEVO LOTE -->
-<div class="contenedor_modal_crear_lote">
-  <div class="contenido_modal_crear_lote">
-      <div class="contenedor_titulo_icono">
-          <div class="titulo_modal_crear_lote">
-              <h2 class="titulo_modal">Crear lote</h2>
-          </div>
-          <div class="icono_1_crear_lote">
-              <input type="checkbox" id="btn_close_modal_lote" class="btn_modal_cancelar_icono">
-              <label for="btn_close_modal_lote">
-                  <ion-icon for="btn_modal_cancelar_icono" class="" name="close-outline"></ion-icon>
-              </label>
-          </div>
-      </div>
-  
-  
-  
-      <form action="">
-          <div class="contenedor_crear_lote">
-              <div class="contenedor_nombre_lote">
-                  <label for="">Nombre del lote</label>
-                  <input type="text" name="">
-              </div>
-  
-  
-              <div class="contenedor_potrero_ocupante">
-                  <label for="">Potrero ocupante</label>
-                  <select id="cars" name="cars">
-                      <option value="volvo">Volvo</option>
-                      <option value="saab">Saab</option>
-                      <option value="mercedes">Mercedes</option>
-                      <option value="audi">Audi</option>
-                  </select>
-              </div>
-  
-          </div>
-  
-          <div class="contenedor_modal_botones_crearlote">
-              <div class="btn_cancelar">
-                  <input type="checkbox" id="btn_cancelar_modal_lote" class="btn_modal_cancelar_crearlote">
-                  <label for="btn_cancelar_modal_lote">
-                      Cancelar
-                  </label>
-              </div>
-              <div class="btn_cerrar">
-                  <button id="mostrar_modal" type="submit">Crear lote</button>
-              </div>
-          </div>
-          <label for="btn_cancelar_modal_lote" class="cerrar_modal_crearlote"></label>
-      </form>
-  </div>
-</div>
-<!-- MODAL CREAR NUEVO LOTE -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- MODAL CREAR NUEVO POTRERO -->
-<div class="contenedor_modal_crear_nuevo_potreros">
-  <div class="contenido_modal_crear_potrero">
-    <div class="contenedor_titulo_icono">
-        <div class="titulo_modal_crear_potrero">
-            <h2 class="titulo_modal">Crear nuevo potrero</h2>
-        </div>
-        <div class="icono_1_crear_potrero">
-            <input type="checkbox" id="btn_close_modal_crear_potrero" class="btn_modal_cancelar_icono">
-            <label for="btn_close_modal_crear_potrero">
-                <ion-icon for="btn_modal_cancelar_icono" class="" name="close-outline"></ion-icon>
-            </label>
-        </div>
-    </div>
-
-
-
-
-      <form action="/nuevopotrero" method="POST">
-      
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <div class="contenedor_rotacion">
-            <div class="contenedor_izquierda">
-              <div class="columnas">
-                <div class="contenedor_input">
-                
-              </div>
-              
-                
-              </div>
-              
-              <div class="izquierda">
-                <div class="columnas">
-                  
-      
-                    <div class="contenedor_input">
-                      <label for="nombre_potrero">Nombre Potrero</label>
-                      <input type="text" id="nombre_potrero" name="nombrepotrero">
-                    </div>
-        
-                    
-                    
-                    
-                    <div class="contenedor_input">
-                      <label for="zona">Zona</label>
-                      <input type="text" id="zona" name="zonapotrero">
-                    </div>
-                    
-                  </div>
-        
-                  <div class="columnas">
-                    <div class="contenedor_input">
-                      <label for="area">Area del Potrero</label>
-                      <input type="number" id="area" name="areapotrero">
-                    </div>
-                    
-                    <div class="contenedor_input">
-                      <label for="dias">Días</label>
-                      <input type="number" id="dias" name="diaspotrero">
-                    </div>
-                  </div>
-                  <div class="columnas">
-                    
-                    <div class="contenedor_input" style="justify-content: columns;">
-                      <label for="pastura">Pastura</label>
-                      <input type="text" id="pastura" name="paturapotrero">
-                    </div>
-                    
-                    
-                    <div class="contenedor_input" style="justify-content: columns;">
-                      <label for="pastura">Coordenadas</label>
-                      <input type="text" id="Coordenadas" name="coordenadapotrero">
-                    </div>
-                  </div>
-                  <div class="form-floating">
-                    <label for="floatingInput">Estado Potrero</label>
-                    <select type="number" class="form-control elegir_potrero" id="floatingInput" placeholder="Estado Potrero" name="estadopotrero">
-                      <option value="" selected disabled>Seleccionar Estado</option>
-                      <option value="Descanso/Recuperacion">Descanso/Recuperacion</option>
-                      <option value="Ocupado/Consumo">Ocupado/Consumo</option>
-                    </select>
-                  </div>
-                  <label for="observacion">Observacion</label>
-                  <textarea name="observacionpotrero" id="" cols="auto" rows="6"></textarea>
-        
-        
-                </div>
-        
-<!--                 <button type="submit" ">
-                  <ion-icon name="reload-outline"></ion-icon>
-                  Realizar Registro
-                </button> -->
-        
-              </div>
-              <div class="contenedor_linea_dividir">
-                  <div class="linea_dividir"></div>
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                  <div class="linea_dividir"></div>
-              </div>
-              <div class="contenedor_derecha">
-                <h1>Lote</h1>
-                <div class="derecha">
-                  <label for="lote_ocupante">Lote</label>
-                  <input type="text" id="lote_ocupante" name="">
-        
-                  <label for="ubicacion">Ubicación</label>
-                  <input type="text" id="ubicacion" name="">
-        
-                  <label for="dias-">Días</label>
-                  <input type="text" id="dias" name="">
-        
-        
-                </div>
-                  
-              </div>
-          </div>
-  
-      
-
-
-
-
-
-
-
-
-        <div class="contenedor_modal_botones_crearpotrero">
-            <div class="btn_cancelar">
-                <input type="checkbox" id="btn_cancelar_modal_crearpotrero" class="btn_modal_cancelar_crearpotrero">
-                <label for="btn_cancelar_modal_crearpotrero">
-                    Cancelar
-                </label>
-            </div>
-            <div class="btn_cerrar">
-                <button id="mostrar_modal" type="submit">Crear potrero</button>
-            </div>
-            <label for="btn_cancelar_modal_crearpotrero" class="cerrar_modal_crearpotrero"></label>
-        </div>
-      </form>
-    
-</div>
-</div>
-<!-- MODAL CREAR NUEVO POTRERO -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <script>
-  // Obtén la referencia de la tabla
-  var tabla = document.getElementById("tabla_potreros_completa").getElementsByTagName('tbody')[0];
-  
-  // Crea 30 filas con contenido aleatorio y añádelas a la tabla
-  for (var i = 0; i < 100; i++) {
-      var fila = tabla.insertRow(-1); // Inserta una fila al final de la tabla
-      for (var j = 0; j < 8; j++) { // Crear celdas
-          var celda = fila.insertCell(j);
-          celda.textContent = Math.random().toString(36).substring(7); // Contenido aleatorio
-      }
-  }
-  </script> -->
-
 <style>
-
-
-
-
-:root {
-    --oscuro: #121212;
-    --header: #1F1F1F;
-    --color-principal: #019A54;
-    --color-secundario: #1E3E2F;
-    --texto_blanco: #fff;
-}
-/* ESTILOS MODAL CREAR POTRERO 2 */
-.elegir_potrero {
-        width: 100%;
-        height: 60px;
-        margin-bottom: 20px;
-        font-size: 21px;
-        padding-right: 10px;
-        background-color: transparent;
-        border: 0;
-        outline: none;
-        color: #fff;
-        background-color: #3d3d3d;
-        border-radius: 4px;
-        height: 38px;
-      }
-
-.contenedor_izquierda {
-        padding-right: 40px;
-      }
-      .contenedor_derecha {
-        padding-left: 40px;
-        justify-content: center;
-      }
-
-
-      .contenedor_izquierda .izquierda {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .contenedor_izquierda .izquierda .columnas .contenedor_input {
-        width: 100%;
-      }
-
-      .contenedor_izquierda .izquierda .columnas {
-        display: flex;
-
-
-      }
-
-      .columnas .contenedor_input:nth-child(2) {
-        padding-left: 20px;
-      }
-
-      .contenedor_izquierda .izquierda .columnas .contenedor_input select {
-        background-color: #3d3d3d;
-        border-radius: 4px;
-        height: 38px;
-      }
-
-
-
-      .contenedor_izquierda .izquierda .columnas .contenedor_input {
-        display: flex;
-        flex-direction: column;
-      }
-      .contenedor_izquierda .izquierda .columnas .contenedor_input2 {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .contenedor_izquierda h1, .contenedor_derecha h1{
-        font-weight: 500;
-        font-size: 26px;
-        margin-bottom: 20px;
-      }
-      .contenedor_izquierda .izquierda label, .contenedor_derecha .derecha label {
-        margin-bottom: 5px;
-      }
-      .contenedor_izquierda .izquierda input, .contenedor_derecha .derecha input {
-        height: 38px;
-        padding-left: 10px;
-        border: none;
-        border-radius: 4px;
-        margin-bottom: 20px;
-        background-color: #3d3d3d;
-        color: #fff;
-        font-size: 18px;
-        transition: 0.1s ease-in-out;
-      }
-      .contenedor_izquierda .izquierda textarea{
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        margin-bottom: 20px;
-        background-color: #3d3d3d;
-        color: #fff;
-        font-size: 18px;
-        transition: 0.1s ease-in-out;
-        resize: none;
-
-      }
-
-      .contenedor_izquierda input:focus, .contenedor_derecha input:focus, .contenedor_izquierda textarea:focus {
-        outline: none; /* Desactiva el contorno predeterminado del navegador */
-        box-shadow: 0 0 20px rgb(50, 46, 46); /* Agrega un resplandor rojo de 5 píxeles */
-
-      }
-
-      .contenedor_izquierda textarea {
-        font-family: poppins;
-      }
-
-      .contenedor_derecha .derecha input[type=date] {
-        padding-right: 5px;
-      }
-
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        color: white;
-      }
-
-      .contenedor_izquierda button {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background-color: #019A54;
-        color: #fff;
-        height: 60px;
-        width: 200px;
-        font-size: 18px;
-        padding: 10px;
-        border-radius: 8px;
-        margin-top: 10px;
-        cursor: pointer;
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-        transition: 0.2s ease-in-out;
-      }
-
-      .contenedor_izquierda button:hover {
-        background-color: #027f47;
-      }
-
-      .contenedor_izquierda button ion-icon {
-        font-size: 23px;
-        margin-right: 10px;
-      }
-
-
-
-      .contenedor_derecha .derecha {
-        display: flex;
-        flex-direction: column;
-      }
-
-
-
-      .contenedor_rotacion {
-        display: grid;
-        grid-template-columns: 1fr 5px 1fr;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        
-      }
-
-      .contenedor_linea_dividir ion-icon {
-        font-size: 150px;
-        color: #0000003c;
-        
-      }
-
-
-      .contenedor_linea_dividir {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .linea_dividir {
-          width: 5px; /* Ajusta según tus necesidades */
-          height: 100%; /* Ajusta según tus necesidades */
-          background-color: #0000003c; /* Ajusta el color según tus necesidades */
-          margin: 5px 0; /* Ajusta el margen según tus necesidades */
-        }
-
-
-/* ESTILOS MODAL CREAR POTRERO 2 */
-
-
-
-
-
-
-
-
-
-
-
-/* ESTILOS MODAL CREAR NUEVO POTRERO */
-.cerrar_modal_crearlote {
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-.cerrar_modal_crearpotrero {
-  height: 100vh;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-
-.contenedor_modal_crear_nuevo_potreros {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(10, 10, 10, 0.7);
-    z-index: 100;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease-in-out;
-}
-
-
-  .modal_lote_crear:checked ~ .contenedor_modal_crear_lote {
-  display: flex;
-  transition: opacity 2s ease-in-out;
-  
-}
-
-
-
-  .contenido_modal_crear_potrero {
-    width: 100%;
-    max-width: 1100px;
-    padding: 20px;
-    background-color: #1D1E22;
-    color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 20px #1f1f1f;
-    transition: .5s ease-in-out;
-  }
-
-  .contenedor_modal_botones_crearpotrero {
-
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .contenedor_modal_botones_crearpotrero button {
-    border: 0;
-    outline: none;
-    background-color: transparent;
-    font-size: 16px;
-    font-family: 'poppins';
-    color: #fff;
-  }
-/* ESTILOS MODAL CREAR NUEVO POTRERO */
-.titulo_modal {
-        color: #fff;
-        font-weight: 100;
-    }
-    .contenedor_titulo_icono {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 20px;
-        border-bottom: 0.7px solid rgb(150,150,150);
-    }
-
-    .contenedor_titulo_icono .icono_1_crear_potrero ion-icon {
-        font-size: 27px;
-        cursor: pointer;
-    }
-
-    .contenedor_crear_nuevo_potrero {
-        margin-top: 20px;
-
-    }
-
-    .contenedor_crear_nuevo_potrero label {
-        margin-bottom: 10px;
-    }
-
-
-
-    .contenedor_modal_nuevo_potrero, .contenedor_potrero_ocupante {
-        display: flex;
-        flex-direction: column;
-        color: #fff;
-        width: 100%;
-    }
-
-    .contenedor_modal_nuevo_potrero {
-        margin-bottom: 10px;
-    }
-
-    .contenedor_potrero_ocupante {
-        margin-bottom: 40px;
-    }
-
-    .contenedor_modal_nuevo_potrero input[type=text], .contenedor_potrero_ocupante select {
-        height: 40px;
-        border-radius: 6px;
-        outline: none;
-        border: 0;
-        background-color: rgb(90,90,90);
-        color: rgb(225, 225, 225);
-        padding-left: 10px;
-        font-size: 18px;
-    }
-
-
-
-
-
-/* MODAL CREAR NUEVO LOTE */
-.cerrar_modal_crearlote {
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-
-.contenedor_modal_crear_lote {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(10, 10, 10, 0.7);
-    z-index: 100;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease-in-out;
-}
-
-
-  .modal_lote_crear:checked ~ .contenedor_modal_crear_lote {
-  display: flex;
-  transition: opacity 2s ease-in-out;
-  
-}
-
-  .contenido_modal_crear_lote {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #1D1E22;
-    color: #000;
-    border-radius: 8px;
-    box-shadow: 0 0 20px #1f1f1f;
-    transition: .5s ease-in-out;
-  }
-
-  .contenedor_modal_botones_crearlote {
-
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .contenedor_modal_botones_crearlote button {
-    border: 0;
-    outline: none;
-    background-color: transparent;
-    font-size: 16px;
-    font-family: 'poppins';
-    color: #fff;
-  }
-/* MODAL CREAR NUEVO LOTE */
-
-
-/* ESTILOS MODAL CREAR NUEVO POTRERO GENERAL */
-.titulo_modal {
-        color: #fff;
-        font-weight: 100;
-    }
-    .contenedor_titulo_icono {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 20px;
-        border-bottom: 0.7px solid rgb(150,150,150);
-    }
-
-    .contenedor_titulo_icono .icono_1_crear_lote ion-icon {
-        font-size: 27px;
-        cursor: pointer;
-    }
-
-    .contenedor_crear_lote {
-        margin-top: 20px;
-
-    }
-
-    .contenedor_crear_lote label {
-        margin-bottom: 10px;
-    }
-
-
-
-    .contenedor_nombre_lote, .contenedor_potrero_ocupante {
-        display: flex;
-        flex-direction: column;
-        color: #fff;
-    }
-
-    .contenedor_nombre_lote {
-        margin-bottom: 10px;
-    }
-
-    .contenedor_potrero_ocupante {
-        margin-bottom: 40px;
-    }
-
-    .contenedor_nombre_lote input[type=text], .contenedor_potrero_ocupante select {
-        height: 40px;
-        border-radius: 6px;
-        outline: none;
-        border: 0;
-        background-color: rgb(90,90,90);
-        color: rgb(225, 225, 225);
-        padding-left: 10px;
-        font-size: 18px;
-    }
-/* ESTILOS MODAL CREAR NUEVO POTRERO GENERAL */
-
-
-
-
-
-
-
-
-
-
-
-/* ESTILOS BOTON CREAR NUEVO LOTE */
-.btn_lote_crear {
-    float: right;
-    background-color: var(--color-principal);
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    height: 50px;
-    width: 260px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: .1s ease-in-out;
-    margin-right: 16px;
-    user-select: none;
-
-  }
-
-  .btn_lote_crear:hover {
-    background-color: #006739;
-  }
-
-  .btn_lote_crear h3 {
-    font-size: 18px;
-    font-weight: 400;
-  }
-  .btn_lote_crear ion-icon {
-    font-size: 26px;
-    margin-right: 5px;
-  }
-
-
-  .btn_lote_crear a {
-    white-space: nowrap;
-  }
-
-  @media (min-width: 767px) {
-    .btn_lote_crear {
-        width: auto !important;
-    }
-}
-/* ESTILOS BOTON CREAR NUEVO LOTE */
-
-
-
-
-
-
-/* ESTILOS BOTON CREAR NUEVO POTRERO */
-.btn_potrero_crear {
-    float: right;
-    background-color: var(--color-principal);
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    height: 50px;
-    width: 260px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: .1s ease-in-out;
-    user-select: none;
-
-  }
-
-  .btn_potrero_crear:hover {
-    background-color: #006739;
-  }
-
-  .btn_potrero_crear h3 {
-    font-size: 18px;
-    font-weight: 400;
-  }
-  .btn_potrero_crear ion-icon {
-    font-size: 26px;
-    margin-right: 5px;
-  }
-
-
-  .btn_potrero_crear a {
-    white-space: nowrap;
-  }
-
-  @media (min-width: 767px) {
-    .btn_potrero_crear {
-        width: auto;
-    }
-}
-/* ESTILOS BOTON CREAR NUEVO POTRERO */
-
-
-
-
-
-
-
 
 
 
@@ -1331,70 +63,94 @@
     color: #fff;
     margin-bottom: 20px;
   }
+  #tabla_potreros_completa_filter{
+    margin: 10px;
+  }
+  #tabla_potreros_completa_filter label::-ms-value{
+    content: 'Filtrar';
+  }
 
   .linea_nav_gestionar {
-    width: 100%;
-    height: 4px;
-    background: #0000003c;
-    border-right: 1px solid #0000003c;
-  }
-
-
-  .contenedor_tabla_potreros {
-    width: 100%;
-  }
-
-  .contenedor_tabla_potreros .tabla_potreros {
-    width: 100%;
-  }
-
-  .nav_gestionar_potreros {
-    position: relative;
-    width: auto;
-    height: 50px;
-    border-radius: 8px;
-    font-size: 0;
-    color: #fff;
-    margin-bottom: 30px;
-
-  }
-
-  body .nav_gestionar_potreros a {
-    color: #fff;
-  }
-
-  .nav_gestionar_potreros a {
-    font-size: 18px;
-        text-decoration: none;
+            width: 100%;
+            height: 4px;
+            background: #0000003c;
+            border-right: 1px solid #0000003c;
+        }
+    
+    
+        .contenedor_tabla_potreros {
+            width: 100%;
+        }
+    
+        .contenedor_tabla_potreros .tabla_potreros {
+            width: 100%;
+        }
+    
+      .nav_gestionar_potreros {
+        position: relative;
+        width: auto;
+        height: 50px;
+        border-radius: 8px;
+        font-size: 0;
         color: #fff;
-        line-height: 60px;
+        margin-bottom: 20px;
+    
+      }
+    
+      body.active .nav_gestionar_potreros a {
+        color: #fff;
+      }
+    
+      .nav_gestionar_potreros a {
+        font-size: 18px;
+        text-decoration: none;
+        color: #000;
+        line-height: 50px;
         position: relative;
         z-index: 1;
         display: inline-block;
         text-align: center;
-        padding: 0 20px;
-  }
-
-  .nav_gestionar_potreros .animation {
-    position: absolute;
-    height: 4px;
-    bottom: -28%;
-    z-index: 0;
-    background: #019A54;
-    border-radius: 8px;
-    transition: all 0.5s ease 0s;
-  }
-
+      }
     
-  .nav_gestionar_potreros a:nth-child(1) {
-        width: 140px;
+      .nav_gestionar_potreros .animation {
+        position: absolute;
+        height: 4px;
+        bottom: -8%;
+        z-index: 0;
+        background: #019A54;
+        border-radius: 8px;
+        transition: all 0.5s ease 0s;
+      }
+    
+      .nav_gestionar_potreros a:nth-child(1) {
+        width: 100px;
       }
     
       .nav_gestionar_potreros .start-home,.nav_gestionar_potreros a:nth-child(1):hover~.animation {
-        width: 140px;
+        width: 100px;
         left: 0;
       }
-
+      .nav_gestionar_potreros a:nth-child(2) {
+        width: 110px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:nth-child(3) {
+        width: 100px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:nth-child(4) {
+        width: 160px;
+      }
+    
+    
+    
+      .nav_gestionar_potreros a:nth-child(5) {
+        width: 120px;
+      }
     
     
     
@@ -1403,26 +159,29 @@
       }
     
       .nav_gestionar_potreros a:nth-child(1):hover ~ .animation {
-        width: 140px;
+        width: 100px;
         left: 0;
       }
     
       .nav_gestionar_potreros a:nth-child(2):hover ~ .animation {
-        width: 90px;
-        left: 140px;
+        width: 110px;
+        left: 100px;
       }
     
       .nav_gestionar_potreros a:nth-child(3):hover ~ .animation {
-        width: 170px;
-        left: 225px;
+        width: 100px;
+        left: 210px;
       }
     
       .nav_gestionar_potreros a:nth-child(4):hover ~ .animation {
-        width: 95px;
-        left: 390px;
+        width: 160px;
+        left: 310px;
       }
     
-
+      .nav_gestionar_potreros a:nth-child(5):hover ~ .animation {
+        width: 120px;
+        left: 470px;
+      }
 </style>
 
 {% include ('footer.html') %}

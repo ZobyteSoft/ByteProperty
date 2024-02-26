@@ -20,8 +20,7 @@
                             <h4>Potreros en descanso</h4>
                         </div>
                     </div>
-
-
+                    
 
                     <div class="card">
                         <div class="conteo">
@@ -52,63 +51,47 @@
                                 <h2>11</h2>
                                 <ion-icon name="alert-circle-outline"></ion-icon>
                             </div>
-                            <h4>Fertilizaciones</h4>
+                            <h4>Potreros con problemas</h4>
                         </div>
                     </div>
                 </div>
-
-                <div class="select_potreros_admin">
-                    <div>
-                        
-                            <h2>
-                                Ver en mapa
-                            </h2>
-                            
-                    </div>
-                    <select name="" id="gpsurl" onchange="consultarmapa()">
-                        <option value="">Hola </option>
-                        <option value="1">1</option>
-                        <option value="2">1</option>
-                        <option value="3">102</option>
-                    </select>
-                </div>
-
-
     
                 <div class="tabla_resumen">
                     <div class="nombre_tabla">
                         <h2>
-                            Resumen
+                            Resumenes
                         </h2>
                         <h4>
-                            <a href="{{ url_for('info_gestion') }}">Ver todo</a>
+                            <a >Ver todo</a>
                         </h4>
                     </div>
                     
 
+                <div class="contenedor_tabla_potreros" style="color: white;">
 
-                    {% if nombre_potrero %}
-                    <table id="tabla_resumen" class="display">
+                    {% if obtdatos %} 
+                    <table id="tabla_resumen" class="display" style="color: white;">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
+                                <th>Nombres</th>
                                 <th>Ubicacion</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for mostrar in nombre_potrero %}
-                            <tr>
-                                <td>{{mostrar.nombre}}</td>
-                                <td>{{mostrar.zona}}</td>
-
-                            </tr>
+                            {% for obtdatos in obtdatos %}
+                                <tr>
+                                    <td>{{obtdatos[1]}}</td>
+                                    <td>{{obtdatos[0]}}</td>
+                                </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                     {% else %}
                     <p>no hay datos</p>
-                    {% endif %}
+                    {% endif %} 
     
+
+                </div>
                 </div><!-- 
                 <select name="select-location" id="select-location">
                     <option value="-1">selecciones  una opcion</option>
@@ -117,19 +100,11 @@
             </div>
             <div class="principal_2">
                 <div class="mapa" id="mapa">
-                    <iframe id="geolocalizacion"></iframe>
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1jCHw1jPFDFxVw_aOZR1_z47Mn5AaTbo&ehbc=2E312F"></iframe>
                 </div>
             </div>
 
         </div>
-
-
-
-
-
-
-
-
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
