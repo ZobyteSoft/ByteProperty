@@ -4,11 +4,11 @@ function updateGreeting() {
     let greeting;
 
     if (hh >= 0 && hh < 12) {
-        greeting = 'Buenos días';
+        greeting = '¡Buenos días!';
     } else if (hh >= 12 && hh < 18) {
-        greeting = 'Buenas tardes';
+        greeting = '¡Buenas tardes!';
     } else {
-        greeting = 'Buenas noches';
+        greeting = '¡Buenas noches!';
     }
 
     let saludo = document.querySelector('#greeting'); // Selecciona el elemento por su ID

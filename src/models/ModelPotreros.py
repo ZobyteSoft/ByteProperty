@@ -1,7 +1,6 @@
-from .entities.potreros import Potrero, Registrarrotacion
+from .entities.potreros import Potrero
 from .entities.lote import Lote
 from flask import Flask, flash
-from datetime import datetime, timedelta
 
 class ModelPotreros():
     
@@ -66,20 +65,7 @@ class ModelPotreros():
             raise Exception(ex)
         finally:
             cursor.close()
-    @classmethod
-    def mostrarlote(self, db, lote):
-        try:
-            cursor = db.connection.cursor()
-            sql = 'SELECT potreros.potrero_nombre, lotes.nombre FROM lotes JOIN potreros ON lotes.idpotrero = potreros.idpotrero WHERE lotes.idlote = %s;'
-            h = cursor.execute(sql, (lote,))
-            ubicacion = cursor.fetchall()
-            print(F'ESTA ES LA ubicaion {ubicacion}')
 
-            return ubicacion
-        except Exception as ex:
-            raise Exception(ex)
-        finally:
-            cursor.close()
     @classmethod
     def rotar(self, db, lote):
         try:
@@ -89,21 +75,6 @@ class ModelPotreros():
             lotes = cursor.fetchall()
 
             return lotes
-        except Exception as ex:
-            raise Exception(ex)
-        finally:
-            cursor.close()
-    @classmethod
-    def rotarFinal(self, db, registrorotar):
-        try:
-            cursor = db.connection.cursor()
-            """ fechadigitada = datetime.strptime(fecha1, "%Y-%m-%d")
-            fechaAproximada = fechadigitada + timedelta(days=30) """
-            sql = 'INSERT INTO `registrosrotacion`( `idpotrero`, `entradasalida`, `fecharotacion`, `posiblereingreso`, `estado`, `idlote`, `oservacion`) VALUES (%s,%s,%s,%s,%s,%s,%s)'
-            cursor.execute(sql, (registrorotar.idpotrero,registrorotar.entradasalida,registrorotar.fecharotacion, registrorotar.posibleingreso,registrorotar.estado,registrorotar.idlote,registrorotar.observacion,))
-            rotacion = cursor.fetchall()
-
-            return rotacion
         except Exception as ex:
             raise Exception(ex)
         finally:

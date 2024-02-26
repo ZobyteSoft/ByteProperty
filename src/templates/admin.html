@@ -20,7 +20,8 @@
                             <h4>Potreros en descanso</h4>
                         </div>
                     </div>
-                    
+
+
 
                     <div class="card">
                         <div class="conteo">
@@ -51,10 +52,28 @@
                                 <h2>11</h2>
                                 <ion-icon name="alert-circle-outline"></ion-icon>
                             </div>
-                            <h4>Potreros con problemas</h4>
+                            <h4>Fertilizaciones</h4>
                         </div>
                     </div>
                 </div>
+
+                <div class="select_potreros_admin">
+                    <div>
+                        
+                            <h2>
+                                Ver en mapa
+                            </h2>
+                            
+                    </div>
+                    <select name="" id="gpsurl" onchange="consultarmapa()">
+                        <option value="">Hola </option>
+                        <option value="1">1</option>
+                        <option value="2">1</option>
+                        <option value="3">102</option>
+                    </select>
+                </div>
+
+
     
                 <div class="tabla_resumen">
                     <div class="nombre_tabla">
@@ -62,7 +81,7 @@
                             Resumen
                         </h2>
                         <h4>
-                            <a >Ver todo</a>
+                            <a href="{{ url_for('info_gestion') }}">Ver todo</a>
                         </h4>
                     </div>
                     
@@ -98,11 +117,19 @@
             </div>
             <div class="principal_2">
                 <div class="mapa" id="mapa">
-                    <iframe src="https://www.google.com/maps/d/embed?mid=1jCHw1jPFDFxVw_aOZR1_z47Mn5AaTbo&ehbc=2E312F"></iframe>
+                    <iframe id="geolocalizacion"></iframe>
                 </div>
             </div>
 
         </div>
+
+
+
+
+
+
+
+
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="

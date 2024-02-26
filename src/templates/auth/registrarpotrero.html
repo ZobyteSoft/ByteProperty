@@ -11,6 +11,8 @@
       <a href="{{ url_for('info_gestion') }}">Informes</a>
       <a href="{{ url_for('rmostrar') }}">Rotar</a>
       <a href="{{ url_for('registerpotrero') }}">Potreros</a>
+      <a href="{{ url_for('listapotreros') }}">Listar potreros</a>
+      <a href="{{ url_for('lotes') }}">Lotes</a>
       <div class="linea_nav_gestionar"></div>
       <div class="animation start-home"></div>
     </nav>
@@ -324,7 +326,7 @@
         border-radius: 8px;
         font-size: 0;
         color: #fff;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     
       }
     
@@ -335,8 +337,8 @@
       .nav_gestionar_potreros a {
         font-size: 18px;
         text-decoration: none;
-        color: #000;
-        line-height: 50px;
+        color: #fff;
+        line-height: 60px;
         position: relative;
         z-index: 1;
         display: inline-block;
@@ -346,7 +348,7 @@
       .nav_gestionar_potreros .animation {
         position: absolute;
         height: 4px;
-        bottom: -8%;
+        bottom: -28%;
         z-index: 0;
         background: #019A54;
         border-radius: 8px;
@@ -358,8 +360,8 @@
       }
     
       .nav_gestionar_potreros .start-home,.nav_gestionar_potreros a:nth-child(1):hover~.animation {
-        width: 110px;
-        left: 100px;
+        width: 100px;
+        left: 210px;
       }
       .nav_gestionar_potreros a:nth-child(2) {
         width: 110px;

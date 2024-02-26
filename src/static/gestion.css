@@ -1,6 +1,7 @@
 :root {
     --oscuro: #121212;
     --header: #1F1F1F;
+    --texto_blanco: #fff;
     --transicion: 0.2s ease-in;
 }
 
@@ -20,6 +21,6 @@ table .tabla_potreros {
     padding: 20px;
 }
 
-body.active .contenedor_gestionar_potreros {
+body .contenedor_gestionar_potreros {
     background-color: var(--header);
 }
